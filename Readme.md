@@ -1,6 +1,7 @@
 # Crypto Currency Trader App
 
 This app is DEMO Crypto Trader if you want to try how trading works but you don't want to use your real money yet.
+
 ## Quick Start
 git clone https://github.com/Macilaci91/CryptoTrader.git
 cd ./lending-app
