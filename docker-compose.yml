@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  cryptodb:
+    volumes:
+     - ./db:/docker-entrypoint-initdb.d
+    image: mysql
+    ports:
+    - "2012:3306"
+    restart: always
+    command: --lower_case_table_names=1
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=cryptotrader
+      - MYSQL_USER=rollnrock
+      - MYSQL_PASSWORD=iddqd
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  cryptoapp:
+    image: crypto
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - cryptodb
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://cryptodb:3306/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 8087:8080
