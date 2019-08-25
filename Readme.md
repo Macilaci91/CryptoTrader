@@ -12,7 +12,7 @@ docker-compose-up
 ## How to use
 ```
 First thing you should do! Update crypto values:
-localhost:8080/update
+localhost:8080/update<br/>
 If you want to view currencies value use:
 localhost:8080/getCryptoAll
 If you want to view your wallet use:
